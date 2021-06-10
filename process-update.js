@@ -61,7 +61,7 @@ module.exports = function (hash, moduleMap, options) {
           console.warn('[HMR] Cannot find update (Full reload needed)');
           console.warn('[HMR] (Probably because of restarting the server)');
         }
-        performReload();
+        // performReload();
         return null;
       }
 
