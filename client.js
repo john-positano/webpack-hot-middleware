@@ -1,5 +1,6 @@
 /*eslint-env browser*/
 /*global __resourceQuery __webpack_public_path__*/
+window.doing_reload = false;
 
 var options = {
   path: '/__webpack_hmr',
@@ -231,6 +232,7 @@ function createReporter() {
 }
 
 var processUpdate = require('./process-update');
+window.processUpdate = processUpdate;
 
 var customHandler;
 var subscribeAllHandler;
@@ -254,6 +256,10 @@ function processMessage(obj) {
             obj.time +
             'ms'
         );
+      }
+      if ( !window.doing_reload ) {
+        window.doing_reload = true;
+        location.reload();
       }
     // fall through
     case 'sync':
